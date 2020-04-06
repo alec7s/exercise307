@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Passports</title>
+</head>
+<body>
+<h1>Passport List</h1>
+<div th:each="person : ${persons}">
+    <h2 th:text="${person.name}"></h2>
+    <h6 th:inline="text">Date of birth: [[${person.dob}]]</h6>
+    <ul>
+        <th:block th:object="${person.passport}" >
+            <li th:inline="text">Was issued passport number [[*{passportNum}]] on
+            <b>[[*{issueDate}]]. </b>It expires on [[*{expDate}]]</li>
+        </th:block>
+    </ul>
+</div>
+
+</body>
+</html>
